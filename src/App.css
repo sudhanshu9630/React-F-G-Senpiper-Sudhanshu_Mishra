@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Noto+Sans&family=Staatliches&display=swap');
+
+/*Default resets*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------- */
+
+.App {
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+.container {
+  display: grid;
+  width: 80rem;
+  height: 40rem;
+  align-content: flex-start;
+  box-shadow: rgb(38, 57, 77) 0px 25px 30px -10px;
+  border-bottom-right-radius: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.logo {
+  display: grid;
+  place-content: center;
+  font-family: 'Merriweather', serif;
+  letter-spacing: 1px;
+  background-color: #F7CCAC;
+  color: #3A3845;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.logo-table {
+  background-color: #3A3845;
+  color: #F7CCAC;
+}
+
+.logo > h1 {
+  font-size: 1.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.tabs {
+  display: flex;
+  height: 100%;
+  border-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.tab {
+  width: 10rem;
+  display: grid;
+  place-content: center;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #C69B7B;
+  color: #3A3845;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.tab:hover {
+  cursor: pointer;
+}
+
+.active-tab {
+  background-color: #3A3845;
+  color: #F7CCAC;
+  border-bottom-left-radius: 0rem;
+}
+
+.content {
+  display: none;
+}
+
+.active-content {
+  display: block;
+}
+
+/* ----------------------------------------------- */
+
+/* Form styles */
+
+.form-wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  background-color: #F7CCAC;
+  border-bottom-right-radius: 2rem;
+}
+
+.form-column {
+  display: grid;
+  justify-content: center;
+  height: 37rem;
+}
+
+.form-left {
+  background-color: #3A3845;
+  border-bottom-right-radius: 1.75rem;
+  gap: 1rem;
+}
+
+.form-right {
+  position: relative;
+  padding-block: 3.5rem;
+  margin-right: 10rem;
+}
+
+.form-intro {
+  height: fit-content;
+  color: #F7CCAC;
+}
+
+.form-intro  h2 {
+  font-family: 'Staatliches', cursive;
+  font-weight: 400;
+  font-size: 4rem;
+  letter-spacing: 0.45rem;
+  padding: 1rem 0.5rem 1rem 2rem;
+}
+
+.form-intro h2::after {
+  content: "";
+  display: block;
+  padding-top: 0.75rem;
+  width: 10rem;
+  border-bottom: 3px solid #826F66;
+}
+
+.form-intro p {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.2rem;
+  padding: 0.25rem 1rem 0 2rem;
+}
+
+.fields {
+  height: fit-content;
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.5rem 2rem 2.5rem 1rem;
+  margin: 0 1.5rem 0 2rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  background-color: rgba(255, 255, 255, .1);  
+  backdrop-filter: blur(5px);
+}
+
+/* Text field styles */
+
+.field {
+  height: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.field input {
+  width: 100%;
+  height: 100%;
+  padding-top: 1.25rem;
+  border: none;
+  outline: none;
+  background: none;
+  color: #C69B7B;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.field label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #C69B7B;
+  color: #C69B7B;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.field label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #F7CCAC;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.label-text {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.error-indicator {
+  display: none;
+  padding-left: 1rem;
+}
+
+.active-error-indicator {
+  display: inline;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #C69B7B;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.field input:focus + .label-name .label-text,
+.field input:valid + .label-name .label-text,
+.field input:not([value = '']) + .label-name .label-text {
+  transform: translateY(-130%);
+  font-size: 0.9rem;
+  color: #F7CCAC;
+}
+
+.field input:focus + .label-name::after,
+.field input:valid + .label-name::after {
+  transform: translateX(0);
+}
+
+.field input[type="tel"] + .label-name .label-text::after {
+  content: "(Format: +91-1234567890)";
+  font-size: .8rem;
+  padding-left: 7rem;
+}
+
+.field input[type="tel"]:focus + .label-name .label-text::after,
+.field input[type="tel"]:valid + .label-name .label-text::after {
+  content: "";
+}
+
+/* Radio button styles */
+
+.buttons {
+  display: flex;
+  gap: 3rem;
+  padding-top: 1rem;
+}
+
+.button {
+  display: flex;
+  gap: .5rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.3rem;
+  border-radius: 1rem;
+  background-color: rgba(198, 155, 123, .3); 
+  backdrop-filter: blur(5px);
+}
+
+.button:hover {
+  background-color: rgba(198, 155, 123, .5); 
+  cursor: pointer;
+}
+
+.button span {
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.form-radio {
+  width: 1.6rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid #3A3845;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.form-radio .radio-mark {
+  display: none;
+  width: calc(100% - 0.25rem);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  background-color: #3A3845;
+}
+
+.form-radio input {
+  display: none;
+}
+
+.form-radio input:checked + .radio-mark {
+  display: inline-block;
+}
+
+.form-radio .label {
+  margin-left: 3rem;
+}
+
+.radio-field {
+  margin-bottom: 1rem;
+  height: max-content;
+  font-family: 'Noto Sans', sans-serif;
+  color: #3A3845;
+}
+
+.radio-field h4 {
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  padding-bottom: .25rem;
+}
+
+.radio-error {
+  margin-top: 1rem;
+  color: red;
+  letter-spacing: 0.05rem;
+  width: fit-content;
+}
+
+.submit-btn {
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  margin: 1rem;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  background-color: #3A3845;
+  color: #F7CCAC;
+  outline: none;
+  position: absolute;
+  right: -8rem;
+  bottom: 1rem;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Table styles */
+
+.table-container {
+  height: 37rem;
+  width: 80rem;
+  background-color: #3A3845;
+  color: #C69B7B;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.85rem;
+}
+
+.table-wrapper {
+  height: 100%;
+  padding: 3rem 2rem;
+}
+
+table {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  border-spacing: 0;
+  border: 1px solid #C69B7B;
+  /*background-color: #C69B7B;*/
+}
+
+table thead {
+  /* head takes the height it requires, 
+  and it's not scaled when table is resized */
+  flex: 0 0 auto;
+  width: calc(100% - 0.9em);
+  background-color: #C69B7B;
+  color: #3A3845;
+}
+
+table tbody {
+  /* body takes all the remaining available space */
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: scroll;
+  
+  font-size: 0.8rem;
+}
+table tbody tr {
+  width: 100%;
+}
+table thead, table tbody tr {
+  display: table;
+  table-layout: fixed;
+}
+
+th {
+  border: 1px solid #3A3845;
+  font-size: 0.95rem;
+  padding-block: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+tbody td {
+  border: 1px solid #C69B7B;
+}
+
+th, td {
+  height: 2.25rem;
+  text-align: center;
+}
+
+/* Search bar */
+
+.filter-bar {
+  padding-top: 0.25rem;
+}
+
+.filter-bar input {
+  border: none;
+  outline: none;
+  width: 90%;
+  height: 1.5rem;
+  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #3A3845;
+  color: #F7CCAC;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+}
+
+.sort-btn {
+  justify-self: end;
+  height: 0.3rem;
+  font-size: 1rem;
+  color: #3A3845;
+  border-radius: 50%;
+  padding-inline: 0.2rem;
+
+}
+
+tbody::-webkit-scrollbar {
+  width: 0.9em;
+  border-radius: 1rem;
+}
+
+tbody::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 1rem;
+}
+
+tbody::-webkit-scrollbar-thumb {
+background-color: #826F66;
+outline: none;
+border-radius: 1rem;
+}
+
+/* ----------------------------------------------------------------------- */
+
+/* Success message */
+
+.success-show {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color: #3A3845;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.success-msg {
+  position: fixed;
+  z-index: 3;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 18rem;
+
+  background-color: #C69B7B;
+  border: 0.5rem solid #3A3845;
+  border-radius: 2rem;
+
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  color: #3A3845;
+  font-size: 1.25rem;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: bold;
+
+  padding: 1rem 0.5rem 0;
+}
+
+
+
+.continue-btn {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  margin: 1rem;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  background-color: #3A3845;
+  color: #F7CCAC;
+  outline: none;
+}
+
+
+
+
